@@ -27,15 +27,50 @@ export async function carregarDestaques() {
     const card = document.createElement("div");
     card.classList.add("swiper-slide");
 
-    card.innerHTML = `
-      <img src="${produto.imagem1}" alt="${produto.nome}" class="produto-imagem" />
-      <div class="preco-tag preco-animado">
-        <i class="fa-solid fa-tag"></i>${produto.preco.toLocaleString(
-          "pt-BR",
-          { style: "currency", currency: "BRL" }
-        )}
+    const preco = Number(produto.preco);
+  const precoPromocional = Number(produto.precoPromocional);
+
+  let precoFormatado = "";
+
+  const temPromocao =
+    produto.precoPromocional !== undefined &&
+    produto.precoPromocional !== "" &&
+    !isNaN(precoPromocional) &&
+    precoPromocional > 0 &&
+    precoPromocional < preco;
+
+  if (preco === 0) {
+    precoFormatado = "Preço: <i>A combinar</i>";
+  } else if (temPromocao) {
+    precoFormatado = `
+      <div class="etiqueta-preco">
+        <div class="preco-antigo">
+          De: <s>${preco.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}</s>
+        </div>
+        <div class="preco-promocional">
+          Por: ${precoPromocional.toLocaleString("pt-BR", {
+            style: "currency",
+            currency: "BRL",
+          })}
+        </div>
       </div>
     `;
+  } else {
+    precoFormatado = `<strong>${preco.toLocaleString("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    })}</strong>`;
+  }
+
+  card.innerHTML = `
+    <img src="${produto.imagem1}" alt="${produto.nome}" class="produto-imagem" />
+    <div class="preco-tag preco-animado">
+      <i class="fa-solid fa-tag"></i> ${precoFormatado}
+    </div>
+  `;
     destaqueContainer.appendChild(card);
   });
 

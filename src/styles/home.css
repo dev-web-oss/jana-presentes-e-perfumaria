@@ -173,6 +173,16 @@
   color: var(--color-neutral-2);
 }
 
+.preco-antigo {
+  font-size: 0.8em;
+  color: var(--color-primary-3);
+}
+
+.preco-promocional {
+  font-weight: bold;
+  color: var(--color-neutral-2);
+}
+
 @keyframes aparecerPreco {
   0% {
     opacity: 0;

@@ -1,6 +1,5 @@
 import "./swiper-init.js";
 import { carregarProdutosPorCategoria } from "./categorias.js";
-//import { carregarAvaliacoes, enviarAvaliacao } from "./avaliacoes.js";
 import { loginComGoogle } from "./auth.js";
 import { carregarDestaques } from "./destaque.js";
 import "./carrinho.js";
@@ -8,7 +7,6 @@ import "./destaque.js";
 
 // Inicialização após DOM pronto
 document.addEventListener("DOMContentLoaded", () => {
-  //carregarAvaliacoes();
   carregarDestaques();
 
   // categorias

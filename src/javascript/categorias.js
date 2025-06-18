@@ -174,6 +174,7 @@ export async function carregarProdutosPorCategoria(categoriaId) {
       spaceBetween: 0,
       speed: 1000,
       grabCursor: true,
+      loop: true,
       pagination: {
         el: ".swiper-pagination",
         clickable: true,
