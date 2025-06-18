@@ -115,3 +115,14 @@ button:hover {
 .hidden {
   display: none !important;
 }
+
+@keyframes fadeInTop {
+  from {
+    opacity: 0;
+    transform: translateY(-40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
